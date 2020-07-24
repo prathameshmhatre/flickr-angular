@@ -1,0 +1,38 @@
+<!-- Grid row -->
+<div class="container-fluid">
+  <div class="grid">
+    <div class="cell" *ngFor="let photo of photos">
+      <a href="javascript:void(0);" (click)="selectedPhoto(photo)">
+        <img [src]="imageUrl(photo)" class="responsive-image" />
+        <div class="rating-container">
+          <ngb-rating
+            [rate]="checkAlreadyRated(photo.id)"
+            [readonly]="true"
+          ></ngb-rating>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="row flex-xl-nowrap">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" *ngIf="pageNumber != 1">
+          <a
+            class="page-link"
+            href="javascript:void(0)"
+            (click)="pageNumber = pageNumber - 1; getFoodPhotos()"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item">
+          <a
+            class="page-link"
+            href="javascript:void(0)"
+            (click)="pageNumber = pageNumber + 1; getFoodPhotos()"
+            >Next</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
